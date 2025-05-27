@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Segoe UI', 'Arial', 'Helvetica Neue', Arial, sans-serif;
+            background: #d3d3d3 url("{% static 'ragni.gif' %}") no-repeat center center fixed;
+            background-size: cover;
+        }
+        .centered {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-box {
+            width: 400px;
+            background: #000;
+            color: #ac1815;
+            border-radius: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 40px 30px 30px 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .corner-gif {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 170px;
+            height: 150px;
+            object-fit: contain;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .login-title {
+            margin-bottom: 24px;
+            color: #ac1815;
+            text-align: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3.3rem;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(172, 24, 21, 0.8);
+            width: 100%;
+        }
+        .login-box label {
+            margin-bottom: 8px;
+            color: #fff;
+            display: block;
+            align-self: flex-start;
+        }
+        .login-box input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 18px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        .login-btn {
+            width: 100%;
+            padding: 10px 24px;
+            background: #ac1815;
+            color: #fff;
+            border: none;
+            border-radius: 100px;
+            text-decoration: none;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 10px;
+            display: block;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+        .login-btn:hover {
+            background: #870b0b;
+            box-shadow: 0 0 20px rgba(135, 11, 11, 0.8);
+        }
+        .signup-btn {
+            background: #fff;
+            color: #ac1815;
+            border: 1px solid #ac1815;
+            margin-top: 10px;
+            text-align: center;
+            width: 43%;
+            transition: background 0.3s, color 0.3s;
+        }
+        .signup-btn:hover {
+            background: #ac1815;
+            color: #fff;
+        }
+        .error-message {
+            color: #ff4d4f;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="centered">
+        <div class="login-box">
+            <img src="{% static 'login.gif' %}" alt="Decorazione" class="corner-gif">
+            <div class="login-title">MySpider</div>
+            {% if error %}
+                <div class="error-message">{{ error }}</div>
+            {% endif %}
+            <form method="post">
+                {% csrf_token %}
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit" class="login-btn">Log in</button>
+            </form>
+            <a href="{% url 'signup' %}" class="login-btn signup-btn">Sign up</a>
+        </div>
+    </div>
+</body>
+</html>

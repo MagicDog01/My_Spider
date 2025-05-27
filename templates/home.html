@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+        {% load static %}
+        <html lang="it">
+        <head>
+            <meta charset="UTF-8">
+            <title>Home</title>
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+                body, html {
+                    height: 100%;
+                    margin: 0;
+                    background: #b1b1b1 url("{% static 'ragni.gif' %}") no-repeat center center fixed;
+                    background-size:cover;
+                    font-family: 'Segoe UI', 'Arial', 'Helvetica Neue', Arial, sans-serif;
+                }
+                .container {
+                    display: flex;
+                    height: 100vh;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .right-side {
+                    flex: 0 0 420px;
+                    background: #000000;
+                    color: #ac1815;
+                    border-radius: 20px;
+                    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.12);
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 150px 25px;
+                    min-height: 320px;
+                }
+                .myspider-title {
+                    font-family: 'Bebas Neue', sans-serif;
+                    font-size: 5.5rem;
+                    color: #ac1815;
+                    text-align: center;
+                    margin-bottom: 20px;
+                    text-shadow: 0 0 10px rgba(172, 24, 21, 0.8);
+                }
+                .spider-img {
+                    max-width: 280px;
+                    border-radius: 20px;
+                    height: auto;
+                    margin-bottom: -30px;
+                    margin-left: 50px;
+                }
+                .login-btn {
+                    padding: 12px 32px;
+                    background: #ac1815;
+                    color: #fff;
+                    border: none;
+                    border-radius: 100px;
+                    text-decoration: none;
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                    margin-top: 18px;
+                    animation: pulse 1s infinite;
+                    transition: background 0.3s, box-shadow 0.3s;
+                }
+                .login-btn:hover {
+                    background: #870b0b;
+                    box-shadow: 0 0 20px rgba(135, 11, 11, 0.8);
+                }
+                @keyframes pulse {
+                    0% { transform: scale(1); box-shadow: 0 0 5px rgba(172, 24, 21, 0.5);}
+                    50% { transform: scale(1.08); box-shadow: 0 0 15px rgba(172, 24, 21, 0.8);}
+                    100% { transform: scale(1); box-shadow: 0 0 5px rgba(172, 24, 21, 0.5);}
+                }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <div class="right-side">
+                    <img src="{% static 'pink.gif' %}" alt="Benvenuto" class="spider-img">
+                    <div class="myspider-title">MySpider</div>
+                    <a href="{% url 'login' %}" class="login-btn">JUMP IN</a>
+                </div>
+            </div>
+        </body>
+        </html>
