@@ -1,11 +1,8 @@
 from django.shortcuts import render, redirect
-import hashlib
 from My_Spider.models import utenti
-from django.contrib.auth.hashers import make_password, check_password
+from django.contrib.auth.hashers import (make_password, check_password)
 import re
 
-def hash_password(password):
-    return hashlib.md5(password.encode('utf-8')).hexdigest()
 def login_view(request):
     if request.method == "POST":
         username = request.POST["username"]
@@ -14,7 +11,7 @@ def login_view(request):
             user = utenti.objects.get(username=username)
             if check_password(password, user.password):
                 request.session['user_id'] = user.id
-                return redirect("home")
+                return redirect("account")
             else:
                 return render(request, "login.html", {"error": "Credenziali non valide"})
         except utenti.DoesNotExist:
@@ -44,8 +41,18 @@ def signup_view(request):
             return render(request, "signup.html", {"error": "Username già esistente"})
         user = utenti(username=username, email=email, password=make_password(password))
         user.save()
-        return redirect("login")
+        return redirect("account")
     return render(request, "signup.html")
 
 def home_view(request):
     return render(request, "home.html")
+def account_view(request):
+    user_id = request.session.get('user_id')
+    username = None
+    if user_id:
+        try:
+            user = utenti.objects.get(id=user_id)
+            username = user.username
+        except utenti.DoesNotExist:
+            pass
+    return render(request, "account.html", {"username": username})
