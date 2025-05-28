@@ -167,9 +167,9 @@
                   MySpider
               </h1>
               <ul>
-                  <li><i class="fas fa-user-circle"></i> Profilo</li>
-                  <li><i class="fas fa-magnifying-glass"></i> Cerca</li>
-                  <li><i class="fas fa-book"></i> Biblioteca</li>
+                  <li onclick="window.location.href='{% url 'diario' %}'"><i class="fas fa-user-circle"></i> Diario</li>
+                  <li onclick="window.location.href='{% url 'cerca' %}'"><i class="fas fa-magnifying-glass"></i> Cerca</li>
+                  <li onclick="window.location.href='{% url 'biblioteca' %}'"><i class="fas fa-book"></i> Biblioteca</li>
               </ul>
               <a href="{% url 'logout' %}" class="logout-btn">
                   <i class="fas fa-sign-out-alt" style="margin-right: 0.5rem;"></i>
