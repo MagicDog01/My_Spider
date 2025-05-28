@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Registrazione</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
         body, html {
@@ -30,16 +31,17 @@
             flex-direction: column;
             align-items: center;
             position: relative;
-            overflow: hidden;
+            overflow: visible;
         }
         .corner-gif {
             position: absolute;
-            top: -20px;
-            right: -20px;
+            top: 0px;
+            right: 0px;
             width: 170px;
             height: 150px;
-            object-fit: contain;
+            object-fit: cover;
             z-index: 2;
+            border-radius: 50px;
             pointer-events: none;
         }
         .signup-title {
@@ -65,7 +67,7 @@
             border: 1px solid #000000;
             border-radius: 8px;
             font-size: 1rem;
-            background: rgba(255, 255, 255, 0.3); /* sfondo trasparente */
+            background: rgba(255, 255, 255, 0.3);
             color: #fff;
         }
         .signup-btn {
@@ -91,15 +93,41 @@
             margin-bottom: 16px;
             text-align: center;
         }
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: transparent;
+            color: #ac1815;
+            border: 2px solid #ac1815;
+            border-radius: 100px;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 8px 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            z-index: 3;
+        }
+        .back-btn:hover {
+            background: #05c327;
+            color: #fff;
+            border-color: #05c327;
+            box-shadow: 0 0 20px rgba(102, 253, 0, 0.8);
+        }
     </style>
 </head>
 <body>
     <div class="centered">
         <div class="signup-box">
+            <a href="{% url 'login' %}" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+            </a>
             <img src="{% static 'login.gif' %}" alt="Decorazione" class="corner-gif">
             <div class="signup-title">Signup</div>
             {% if error %}
-                <div class="error-message">{{ error }}</div>
+            <div class="error-message">{{ error }}</div>
             {% endif %}
             <form method="post">
                 {% csrf_token %}

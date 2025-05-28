@@ -36,7 +36,7 @@ def signup_view(request):
 
             if not is_valid_password(password):
                 return render(request, "signup.html",
-                    {"error": "La password deve avere almeno 8 caratteri, un numero e un carattere speciale."})
+                   {"error": "La password deve avere almeno 8 caratteri, un numero e un carattere speciale."})
 
             if utenti.objects.filter(username=username).exists():
                 return render(request, "signup.html", {"error": "Username già esistente"})
