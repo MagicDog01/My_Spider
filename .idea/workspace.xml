@@ -5,11 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="225d5da6-a32d-4245-9a1a-235942e20367" name="Changes" comment="pagina home + pagina log in + pagina signup (la funzione di registrazione e log in funzionano password hashate sha256,requisiti di lunghezza e caratteri. database collegato e funzionante)">
-      <change beforePath="$PROJECT_DIR$/.idea/My_Spider_X.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/My_Spider_X.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/794beee5-27c4-4b22-984b-7811e23e42bc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/794beee5-27c4-4b22-984b-7811e23e42bc/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/800f17fd-7426-4173-a3cb-b768365eb697.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/800f17fd-7426-4173-a3cb-b768365eb697/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/My_Spider/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/My_Spider/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/My_Spider_X/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/My_Spider_X/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/signup.html" afterDir="false" />
     </list>
@@ -31,18 +33,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "MagicDog01"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;MagicDog01&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/MagicDog01/My_Spider.git",
-    "accountId": "34dbe105-dbdb-4177-9fde-5058f9eca94f"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/MagicDog01/My_Spider.git&quot;,
+    &quot;accountId&quot;: &quot;34dbe105-dbdb-4177-9fde-5058f9eca94f&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -121,7 +123,8 @@
       <workItem from="1748291703662" duration="4439000" />
       <workItem from="1748362474910" duration="1576000" />
       <workItem from="1748364081821" duration="101000" />
-      <workItem from="1748364190191" duration="23069000" />
+      <workItem from="1748364190191" duration="23812000" />
+      <workItem from="1748428289321" duration="3368000" />
     </task>
     <task id="LOCAL-00001" summary="pagina home + pagina log in + pagina signup (la funzione di registrazione e log in funzionano password hashate sha256,requisiti di lunghezza e caratteri. database collegato e funzionante)">
       <option name="closed" value="true" />
@@ -139,7 +142,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748379410147</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="pagina home + pagina log in + pagina signup (la funzione di registrazione e log in funzionano password hashate sha256,requisiti di lunghezza e caratteri. database collegato e funzionante)">
+      <option name="closed" value="true" />
+      <created>1748388154141</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1748388154141</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
