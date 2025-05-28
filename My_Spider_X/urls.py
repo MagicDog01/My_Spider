@@ -12,4 +12,5 @@ urlpatterns = [
     path('logout/', logout_view, name='logout'),
     path('cerca', cerca_view, name='cerca'),
     path('biblioteca/', biblioteca_view, name='biblioteca'),
+    path('add_spider/', add_spider, name='add_spider'),
 ]

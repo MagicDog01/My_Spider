@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from My_Spider.models import utenti
+from My_Spider.models import utenti, spider
 from django.contrib.auth.hashers import (make_password, check_password)
 import re
 
@@ -91,3 +91,18 @@ def logout_view(request):
     request.session.flush()
     request.session.modified = True
     return redirect('login')
+
+def add_spider(request):
+    if not request.session.get('logged_in'):
+        return redirect('login')
+    if request.method == "POST":
+        user = utenti.objects.get(username=request.session['username'])
+        spider = Spider(
+            nome=request.POST['nome'],
+            descrizione=request.POST['descrizione'],
+            url=request.POST['url'],
+            utente=user
+        )
+        spider.save()
+        return redirect('diario')
+    return redirect('diario')

@@ -1,10 +1,224 @@
 <!DOCTYPE html>
-<html lang="en">
+{% load static %}
+<html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>diario</title>
+    <title>Diario Spider</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #121212;
+            color: #fff;
+            display: flex;
+            height: 100vh;
+        }
+        aside {
+            width: 220px;
+            background-color: #1e1e1e;
+            padding: 2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        aside h1 {
+            color: #ac1815;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            margin-top: 2rem;
+            font-family: 'Bebas Neue', sans-serif;
+        }
+        aside li {
+            display: flex;
+            align-items: center;
+            margin: 2rem 0;
+            font-size: 1.2rem;
+            color: #ccc;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 1rem;
+            border-radius: 8px;
+            background-color: #2a2a2a;
+            border: 1px solid transparent;
+        }
+        aside li:hover {
+            color: #f44336;
+            background-color: #333;
+            transform: translateX(10px);
+            border-color: #f44336;
+            box-shadow: 0 0 15px rgba(244, 67, 54, 0.3);
+        }
+        main {
+            flex: 1;
+            padding: 2rem;
+            background-color: #181818;
+            overflow-y: auto;
+        }
+        .spider-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .spider-card {
+            background-color: #2a2a2a;
+            padding: 1.5rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        .spider-card:hover {
+            transform: translateX(5px);
+            background-color: #333;
+            box-shadow: 0 0 15px rgba(244, 67, 54, 0.2);
+        }
+        .add-btn {
+            background-color: #ac1815;
+            color: #fff;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+        .add-btn:hover {
+            background-color: #8f1412;
+            box-shadow: 0 0 15px rgba(244, 67, 54, 0.4);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #2a2a2a;
+            padding: 2rem;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+        }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border-radius: 4px;
+            background-color: #333;
+            border: 1px solid #444;
+            color: #fff;
+        }
+        .form-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .save-btn, .cancel-btn {
+            padding: 0.7rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            border: none;
+        }
+        .save-btn {
+            background-color: #ac1815;
+            color: #fff;
+        }
+        .cancel-btn {
+            background-color: #444;
+            color: #fff;
+        }
+        .date {
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+    </style>
 </head>
 <body>
+    <aside>
+        <h1>
+            <img src="{% static 'logo2.png' %}" alt="Logo" style="width: 40px; height: 40px; vertical-align: middle; margin-right: 0px;">
+            MySpider
+        </h1>
+        <ul>
+            <li onclick="window.location.href='{% url 'diario' %}'"><i class="fas fa-user-circle"></i> Diario</li>
+            <li onclick="window.location.href='{% url 'cerca' %}'"><i class="fas fa-magnifying-glass"></i> Cerca</li>
+            <li onclick="window.location.href='{% url 'biblioteca' %}'"><i class="fas fa-book"></i> Biblioteca</li>
+        </ul>
+    </aside>
 
+    <main>
+        <h2>Il Mio Diario Spider</h2>
+        <button class="add-btn" onclick="showModal()">
+            <i class="fas fa-plus"></i> Aggiungi Spider
+        </button>
+
+        <div class="spider-cards" id="spiderCards">
+            <div class="spider-card">
+                <h3>Spider Wikipedia</h3>
+                <p>Spider che estrae i titoli delle pagine da Wikipedia.</p>
+                <a href="https://it.wikipedia.org" target="_blank">https://it.wikipedia.org</a>
+                <p class="date">Creato il: 01/06/2024 10:30</p>
+            </div>
+            <div class="spider-card">
+                <h3>Spider Notizie</h3>
+                <p>Spider che raccoglie le ultime notizie dai principali quotidiani online.</p>
+                <a href="https://www.repubblica.it" target="_blank">https://www.repubblica.it</a>
+                <p class="date">Creato il: 02/06/2024 09:15</p>
+            </div>
+            <div class="spider-card">
+                <h3>Spider Ricette</h3>
+                <p>Spider che salva ricette di cucina da siti specializzati.</p>
+                <a href="https://www.giallozafferano.it" target="_blank">https://www.giallozafferano.it</a>
+                <p class="date">Creato il: 03/06/2024 14:50</p>
+            </div>
+        </div>
+
+        <div class="modal" id="spiderModal">
+            <div class="modal-content">
+                <h3>Nuovo Spider</h3>
+                <form id="spiderForm" method="POST" action="{% url 'add_spider' %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="nome">Nome Spider:</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="descrizione">Descrizione:</label>
+                        <textarea id="descrizione" name="descrizione" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="url">URL:</label>
+                        <input type="url" id="url" name="url" required>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="submit" class="save-btn">Salva</button>
+                        <button type="button" class="cancel-btn" onclick="hideModal()">Annulla</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function showModal() {
+            document.getElementById('spiderModal').style.display = 'flex';
+        }
+        function hideModal() {
+            document.getElementById('spiderModal').style.display = 'none';
+        }
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('spiderModal')) {
+                hideModal();
+            }
+        }
+    </script>
 </body>
 </html>
