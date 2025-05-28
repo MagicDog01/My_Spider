@@ -39,28 +39,42 @@
                   font-family: 'Bebas Neue', sans-serif;
               }
 
-              aside ul {
-                  list-style: none;
-              }
+               aside li {
+        display: flex;
+        align-items: center;
+        margin: 2rem 0;
+        font-size: 1.2rem;
+        color: #ccc;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 1rem;
+        border-radius: 8px;
+        background-color: #2a2a2a;
+        border: 1px solid transparent;
+    }
 
-              aside li {
-                  display: flex; /*scritta pulsanti a sinistra*/
-                  align-items: center;
-                  margin: 2rem 0;
-                  font-size:1.2rem;
-                  color: #ccc;
-                  cursor: pointer;
-                  transition: color 0.3s;
-              }
+    aside li:hover {
+        color: #f44336;
+        background-color: #333;
+        transform: translateX(10px);
+        border-color: #f44336;
+        box-shadow: 0 0 15px rgba(244, 67, 54, 0.3);
+    }
 
-              aside li:hover {
-                  color: #f44336;
-              }
+    aside li i {
+        margin-right: 0.8rem;
+        width: 20px;
+        transition: transform 0.3s ease;
+    }
 
-              aside li i {
-                  margin-right: 0.5rem;
-                  width: 20px;
-              }
+    aside li:hover i {
+        transform: scale(1.2);
+    }
+
+    aside ul {
+        list-style: none;
+        width: 100%;
+    }
 
               .logout-btn {
                   margin-top: auto;
