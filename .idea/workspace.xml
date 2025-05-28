@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="225d5da6-a32d-4245-9a1a-235942e20367" name="Changes" comment="pagina home + pagina log in + pagina signup (la funzione di registrazione e log in funzionano password hashate sha256,requisiti di lunghezza e caratteri. database collegato e funzionante)">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/794beee5-27c4-4b22-984b-7811e23e42bc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/794beee5-27c4-4b22-984b-7811e23e42bc/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/800f17fd-7426-4173-a3cb-b768365eb697.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/800f17fd-7426-4173-a3cb-b768365eb697/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/signup.html" afterDir="false" />
-    </list>
+    <list default="true" id="225d5da6-a32d-4245-9a1a-235942e20367" name="Changes" comment="pagina home + pagina log in + pagina signup (la funzione di registrazione e log in funzionano password hashate sha256,requisiti di lunghezza e caratteri. database collegato e funzionante)" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -124,7 +114,7 @@
       <workItem from="1748362474910" duration="1576000" />
       <workItem from="1748364081821" duration="101000" />
       <workItem from="1748364190191" duration="23812000" />
-      <workItem from="1748428289321" duration="3368000" />
+      <workItem from="1748428289321" duration="3414000" />
     </task>
     <task id="LOCAL-00001" summary="pagina home + pagina log in + pagina signup (la funzione di registrazione e log in funzionano password hashate sha256,requisiti di lunghezza e caratteri. database collegato e funzionante)">
       <option name="closed" value="true" />
@@ -150,7 +140,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748388154141</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="pagina home + pagina log in + pagina signup (la funzione di registrazione e log in funzionano password hashate sha256,requisiti di lunghezza e caratteri. database collegato e funzionante)">
+      <option name="closed" value="true" />
+      <created>1748432717594</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1748432717594</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
