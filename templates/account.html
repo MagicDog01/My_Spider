@@ -42,7 +42,7 @@
     .logo-section {
       display: flex;
       align-items: center;
-      color: #f33;
+      color: #ff0101;
       font-size: 2rem;
       gap: 0.8rem;
     }
@@ -54,7 +54,7 @@
     }
 
     .nav-bar {
-      background-color: #f30101;
+      background-color: #aaa9a9;
       width: 95%;
       padding: 0.6rem;
       border-radius: 15px;
@@ -79,10 +79,32 @@
     .black-strip {
       background-color: black;
       width: 100%;
-      height: 35px;
+      height: 45px;
       border-radius: 15px;
       margin-top: 10px;
       z-index: 1;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding-right: 20px;
+    }
+
+    .logout-btn {
+      background-color: #ffffff;
+      color: #0b0b0b;
+      border: none;
+      padding: 0.3rem 1rem;
+      border-radius: 15px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .logout-btn:hover {
+      background: #ff0101;
+      box-shadow: 0 0 20px rgba(250, 47, 47, 0.8);
+
+      color: #ffffff;
     }
 
     .main-content {
@@ -91,6 +113,12 @@
       height: 500px;
       background-color: grey;
       border-radius: 20px;
+    }
+    .user-info {
+        color: white;
+        margin-right: 15px;
+        font-size: 0.9rem;
+        font-family: 'Orbitron', sans-serif;
     }
   </style>
 </head>
@@ -108,8 +136,10 @@
     <button>BIBLIOTECA</button>
   </div>
 
-  <div class="black-strip"></div>
-
+ <div class="black-strip">
+     <span class="user-info">{{ username }}</span>
+     <a href="{% url 'logout' %}" class="logout-btn" style="text-decoration: none;">LOGOUT</a>
+ </div>
   <div class="main-content">
     <!-- Contenuto dinamico qui -->
   </div>
