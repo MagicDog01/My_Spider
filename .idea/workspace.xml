@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="225d5da6-a32d-4245-9a1a-235942e20367" name="Changes" comment="aggiunto pulsante back in login e signup, aggiunta pagina account senza funzioni e pulsante logout">
+    <list default="true" id="225d5da6-a32d-4245-9a1a-235942e20367" name="Changes" comment="creato diario bozza">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/My_Spider/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/My_Spider/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/My_Spider_X/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/My_Spider_X/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/diario.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/diario.html" afterDir="false" />
     </list>
@@ -52,26 +51,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Django Server.My_Spider_X.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "django.template.preview.state": "SHOW_EDITOR",
-    "git-widget-placeholder": "master",
-    "junie.onboarding.icon.badge.shown": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.github.copilot.settings.ApplicationConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Django Server.My_Spider_X.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.github.copilot.settings.ApplicationConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="My_Spider_X" type="Python.DjangoServer" factoryName="Django server">
       <module name="My_Spider_X" />
@@ -121,7 +120,9 @@
       <workItem from="1748364081821" duration="101000" />
       <workItem from="1748364190191" duration="23812000" />
       <workItem from="1748428289321" duration="3414000" />
-      <workItem from="1748441121206" duration="12451000" />
+      <workItem from="1748441121206" duration="12782000" />
+      <workItem from="1748461963060" duration="3399000" />
+      <workItem from="1748528649388" duration="990000" />
     </task>
     <task id="LOCAL-00001" summary="pagina home + pagina log in + pagina signup (la funzione di registrazione e log in funzionano password hashate sha256,requisiti di lunghezza e caratteri. database collegato e funzionante)">
       <option name="closed" value="true" />
@@ -195,7 +196,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748451886440</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="creato diario bozza">
+      <option name="closed" value="true" />
+      <created>1748453918573</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1748453918573</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -215,6 +224,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="pagina home + pagina log in + pagina signup (la funzione di registrazione e log in funzionano password hashate sha256,requisiti di lunghezza e caratteri. database collegato e funzionante)" />
     <MESSAGE value="aggiunto pulsante back in login e signup, aggiunta pagina account senza funzioni e pulsante logout" />
-    <option name="LAST_COMMIT_MESSAGE" value="aggiunto pulsante back in login e signup, aggiunta pagina account senza funzioni e pulsante logout" />
+    <MESSAGE value="creato diario bozza" />
+    <option name="LAST_COMMIT_MESSAGE" value="creato diario bozza" />
   </component>
 </project>

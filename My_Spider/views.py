@@ -97,7 +97,7 @@ def add_spider(request):
         return redirect('login')
     if request.method == "POST":
         user = utenti.objects.get(username=request.session['username'])
-        spider = Spider(
+        spider = spider(
             nome=request.POST['nome'],
             descrizione=request.POST['descrizione'],
             url=request.POST['url'],
