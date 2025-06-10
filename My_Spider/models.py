@@ -16,3 +16,5 @@ class spider(models.Model):
     sesso = models.CharField(max_length=10)
     specie = models.CharField(max_length=50)
     utente = models.ForeignKey(utenti, on_delete=models.CASCADE)
+    icona = models.CharField(max_length=100)
+    unita_eta = models.CharField(max_length=10, default='anni')

@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="225d5da6-a32d-4245-9a1a-235942e20367" name="Changes" comment="creato diario bozza">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/dc25db6e-e2ed-461d-9026-2d43b0ae2faa.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/dc25db6e-e2ed-461d-9026-2d43b0ae2faa.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/My_Spider/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/My_Spider/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/My_Spider/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/My_Spider/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/My_Spider_X/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/My_Spider_X/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/diario.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/diario.html" afterDir="false" />
     </list>
@@ -122,7 +125,12 @@
       <workItem from="1748428289321" duration="3414000" />
       <workItem from="1748441121206" duration="12782000" />
       <workItem from="1748461963060" duration="3399000" />
-      <workItem from="1748528649388" duration="990000" />
+      <workItem from="1748528649388" duration="1075000" />
+      <workItem from="1748536697885" duration="729000" />
+      <workItem from="1749490088665" duration="467000" />
+      <workItem from="1749551202557" duration="597000" />
+      <workItem from="1749585117511" duration="6245000" />
+      <workItem from="1749593632940" duration="988000" />
     </task>
     <task id="LOCAL-00001" summary="pagina home + pagina log in + pagina signup (la funzione di registrazione e log in funzionano password hashate sha256,requisiti di lunghezza e caratteri. database collegato e funzionante)">
       <option name="closed" value="true" />
@@ -204,7 +212,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748453918573</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="creato diario bozza">
+      <option name="closed" value="true" />
+      <created>1748529727233</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1748529727233</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

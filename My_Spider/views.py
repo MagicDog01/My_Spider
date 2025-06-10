@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from My_Spider.models import utenti, spider
-from django.contrib.auth.hashers import (make_password, check_password)
+from django.contrib.auth.hashers import make_password, check_password
+from django.views.decorators.csrf import csrf_exempt
 import re
 
 def login_view(request):
@@ -19,7 +20,6 @@ def login_view(request):
     return render(request, "login.html")
 
 def is_valid_password(password):
-    # Almeno 8 caratteri, almeno un numero e un carattere speciale
     if len(password) < 8:
         return False
     if not re.search(r"\d", password):
@@ -57,8 +57,11 @@ def home_view(request):
 
 def diario_view(request):
     if request.session.get('logged_in'):
+        user = utenti.objects.get(username=request.session['username'])
+        spiders = spider.objects.filter(utente=user).order_by('-id')
         context = {
-            'username': request.session.get('username', 'Utente')
+            'username': request.session.get('username', 'Utente'),
+            'spiders': spiders
         }
         return render(request, 'diario.html', context)
     return redirect('login')
@@ -95,14 +98,35 @@ def logout_view(request):
 def add_spider(request):
     if not request.session.get('logged_in'):
         return redirect('login')
+    user = utenti.objects.get(username=request.session['username'])
     if request.method == "POST":
-        user = utenti.objects.get(username=request.session['username'])
-        spider = spider(
-            nome=request.POST['nome'],
-            descrizione=request.POST['descrizione'],
-            url=request.POST['url'],
-            utente=user
+        nome = request.POST.get('nome')
+        eta = request.POST.get('eta')
+        unita_eta = request.POST.get('unita_eta')
+        sesso = request.POST.get('sesso')
+        specie = request.POST.get('specie')
+        icona = request.POST.get('icona')
+        nuovo_spider = spider(
+            nome=nome,
+            eta=int(eta),
+            unita_eta=unita_eta,
+            sesso=sesso,
+            specie=specie,
+            utente=user,
+            icona=icona
         )
-        spider.save()
+        nuovo_spider.save()
         return redirect('diario')
+    # Aggiungi un return anche per GET o altri metodi
+    return redirect('diario')
+
+@csrf_exempt
+def delete_spider(request, spider_id):
+    if request.method == "POST" and request.session.get('logged_in'):
+        user = utenti.objects.get(username=request.session['username'])
+        try:
+            s = spider.objects.get(id=spider_id, utente=user)
+            s.delete()
+        except spider.DoesNotExist:
+            pass
     return redirect('diario')

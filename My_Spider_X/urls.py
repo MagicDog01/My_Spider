@@ -13,4 +13,7 @@ urlpatterns = [
     path('cerca', cerca_view, name='cerca'),
     path('biblioteca/', biblioteca_view, name='biblioteca'),
     path('add_spider/', add_spider, name='add_spider'),
+    path('delete_spider/<int:spider_id>/', delete_spider, name='delete_spider'),
+
+
 ]

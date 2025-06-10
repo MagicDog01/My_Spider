@@ -1,223 +1,414 @@
 <!DOCTYPE html>
-{% load static %}
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <title>Diario Spider</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #121212;
-            color: #fff;
-            display: flex;
-            height: 100vh;
-        }
-        aside {
-            width: 220px;
-            background-color: #1e1e1e;
-            padding: 2rem 1rem;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        aside h1 {
-            color: #ac1815;
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            margin-top: 2rem;
-            font-family: 'Bebas Neue', sans-serif;
-        }
-        aside li {
-            display: flex;
-            align-items: center;
-            margin: 2rem 0;
-            font-size: 1.2rem;
-            color: #ccc;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            padding: 1rem;
-            border-radius: 8px;
-            background-color: #2a2a2a;
-            border: 1px solid transparent;
-        }
-        aside li:hover {
-            color: #f44336;
-            background-color: #333;
-            transform: translateX(10px);
-            border-color: #f44336;
-            box-shadow: 0 0 15px rgba(244, 67, 54, 0.3);
-        }
-        main {
-            flex: 1;
-            padding: 2rem;
-            background-color: #181818;
-            overflow-y: auto;
-        }
-        .spider-cards {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        .spider-card {
-            background-color: #2a2a2a;
-            padding: 1.5rem;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-        }
-        .spider-card:hover {
-            transform: translateX(5px);
-            background-color: #333;
-            box-shadow: 0 0 15px rgba(244, 67, 54, 0.2);
-        }
-        .add-btn {
-            background-color: #ac1815;
-            color: #fff;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            transition: all 0.3s ease;
-        }
-        .add-btn:hover {
-            background-color: #8f1412;
-            box-shadow: 0 0 15px rgba(244, 67, 54, 0.4);
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            background-color: #2a2a2a;
-            padding: 2rem;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 500px;
-        }
-        .form-group { margin-bottom: 1rem; }
-        .form-group label { display: block; margin-bottom: 0.5rem; }
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 0.5rem;
-            border-radius: 4px;
-            background-color: #333;
-            border: 1px solid #444;
-            color: #fff;
-        }
-        .form-buttons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        .save-btn, .cancel-btn {
-            padding: 0.7rem 1.5rem;
-            border-radius: 4px;
-            cursor: pointer;
-            border: none;
-        }
-        .save-btn {
-            background-color: #ac1815;
-            color: #fff;
-        }
-        .cancel-btn {
-            background-color: #444;
-            color: #fff;
-        }
-        .date {
-            color: #888;
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-        }
-    </style>
-</head>
-<body>
-    <aside>
-        <h1>
-            <img src="{% static 'logo2.png' %}" alt="Logo" style="width: 40px; height: 40px; vertical-align: middle; margin-right: 0px;">
-            MySpider
-        </h1>
-        <ul>
-            <li onclick="window.location.href='{% url 'diario' %}'"><i class="fas fa-user-circle"></i> Diario</li>
-            <li onclick="window.location.href='{% url 'cerca' %}'"><i class="fas fa-magnifying-glass"></i> Cerca</li>
-            <li onclick="window.location.href='{% url 'biblioteca' %}'"><i class="fas fa-book"></i> Biblioteca</li>
-        </ul>
-    </aside>
-
-    <main>
-        <h2>Il Mio Diario Spider</h2>
-        <button class="add-btn" onclick="showModal()">
-            <i class="fas fa-plus"></i> Aggiungi Spider
-        </button>
-
-        <div class="spider-cards" id="spiderCards">
-            <div class="spider-card">
-                <h3>Brachypelma hamorii</h3>
-                <p>terricola</p>
-
-                <p class="date">Creato il: 01/06/2024 10:30</p>
-            </div>
-            <div class="spider-card">
-                <h3>Spider 2</h3>
-                <p>specie 2.</p>
-
-                <p class="date">Creato il: 02/06/2024 09:15</p>
-            </div>
-            <div class="spider-card">
-                <h3>Spider 3</h3>
-                <p>specie 3</p>
-                <p class="date">Creato il: 03/06/2024 14:50</p>
-            </div>
-        </div>
-
-        <div class="modal" id="spiderModal">
-            <div class="modal-content">
-                <h3>Nuovo Spider</h3>
-                <form id="spiderForm" method="POST" action="{% url 'add_spider' %}">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <label for="nome">Nome Spider:</label>
-                        <input type="text" id="nome" name="nome" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="descrizione">Descrizione:</label>
-                        <textarea id="descrizione" name="descrizione" rows="3" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="url">URL:</label>
-                        <input type="url" id="url" name="url" required>
-                    </div>
-                    <div class="form-buttons">
-                        <button type="submit" class="save-btn">Salva</button>
-                        <button type="button" class="cancel-btn" onclick="hideModal()">Annulla</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </main>
-
-    <script>
-        function showModal() {
-            document.getElementById('spiderModal').style.display = 'flex';
-        }
-        function hideModal() {
-            document.getElementById('spiderModal').style.display = 'none';
-        }
-        window.onclick = function(event) {
-            if (event.target == document.getElementById('spiderModal')) {
-                hideModal();
-            }
-        }
-    </script>
-</body>
-</html>
+                     {% load static %}
+                     <html lang="it">
+                     <head>
+                         <meta charset="UTF-8">
+                         <meta name="viewport" content="width=device-width, initial-scale=1">
+                         <title>MySpider</title>
+                         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+                         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+                         <style>
+                             * { box-sizing: border-box; margin: 0; padding: 0; }
+                             body {
+                                 font-family: 'Inter', sans-serif;
+                                 background: #121212;
+                                 color: #fff;
+                                 display: flex;
+                                 height: 100vh;
+                             }
+                             aside {
+                                 width: 220px;
+                                 background-color: #1e1e1e;
+                                 padding: 2rem 1rem;
+                                 display: flex;
+                                 flex-direction: column;
+                                 min-height: 100vh;
+                             }
+                             aside h1 {
+                                 color: #ac1815;
+                                 font-size: 2.5rem;
+                                 margin-bottom: 2rem;
+                                 margin-top: 2rem;
+                                 font-family: 'Bebas Neue', sans-serif;
+                             }
+                             aside li {
+                                 display: flex;
+                                 align-items: center;
+                                 margin: 2rem 0;
+                                 font-size: 1.2rem;
+                                 color: #ccc;
+                                 cursor: pointer;
+                                 transition: all 0.3s ease;
+                                 padding: 1rem;
+                                 border-radius: 8px;
+                                 background-color: #2a2a2a;
+                                 border: 1px solid transparent;
+                             }
+                             aside li:hover {
+                                 color: #f44336;
+                                 background-color: #333;
+                                 transform: translateX(10px);
+                                 border-color: #f44336;
+                                 box-shadow: 0 0 15px rgba(244, 67, 54, 0.3);
+                             }
+                             aside li i {
+                                 margin-right: 0.8rem;
+                                 width: 20px;
+                                 transition: transform 0.3s ease;
+                             }
+                             aside li:hover i {
+                                 transform: scale(1.2);
+                             }
+                             aside ul {
+                                 list-style: none;
+                                 width: 100%;
+                             }
+                             .logout-btn {
+                                 margin-top: auto;
+                                 padding: 0.7rem;
+                                 background-color: transparent;
+                                 color: #ccc;
+                                 border: none;
+                                 cursor: pointer;
+                                 width: 100%;
+                                 text-align: left;
+                                 font-size:1.2rem;
+                                 display: flex;
+                                 align-items: center;
+                                 text-decoration: none;
+                             }
+                             .logout-btn:hover {
+                                 color: #f44336;
+                             }
+                             main {
+                                 flex: 1;
+                                 padding: 2rem;
+                                 background-color: #181818;
+                                 overflow-y: auto;
+                             }
+                             h2 {
+                                 font-size: 3rem;
+                                 margin-bottom: 1rem;
+                                 margin-top: 2rem;
+                                 font-family: 'Bebas Neue', sans-serif;
+                             }
+                             .highlight {
+                                 color: #ac1815;
+                             }
+                             .add-btn {
+                                 background-color: #ac1815;
+                                 color: #fff;
+                                 border: none;
+                                 padding: 1rem 2rem;
+                                 border-radius: 8px;
+                                 cursor: pointer;
+                                 font-size: 1.1rem;
+                                 margin-bottom: 2rem;
+                                 transition: all 0.3s ease;
+                             }
+                             .add-btn:hover {
+                                 background-color: #8f1412;
+                                 box-shadow: 0 0 15px rgba(244, 67, 54, 0.4);
+                             }
+                             .spider-cards {
+                                 display: flex;
+                                 flex-direction: column;
+                                 gap: 1.5rem;
+                                 margin-top: 1rem;
+                             }
+                             .spider-card {
+                                 background-color: #2a2a2a;
+                                 padding: 1.5rem;
+                                 border-radius: 12px;
+                                 display: flex;
+                                 flex-direction: column;
+                                 gap: 1rem;
+                                 transition: background-color 0.3s;
+                                 position: relative;
+                             }
+                             .spider-card:hover {
+                                 background-color: #333;
+                             }
+                             .spider-card-top {
+                                 display: flex;
+                                 align-items: center;
+                                 gap: 2rem;
+                             }
+                             .spider-img {
+                                 width: 100px;
+                                 height: 100px;
+                                 object-fit: contain;
+                                 border-radius: 8px;
+                                 background: #222;
+                                 border: 1px solid #333;
+                             }
+                             .spider-info {
+                                 display: flex;
+                                 flex-direction: column;
+                                 gap: 0.3rem;
+                                 flex: 1;
+                             }
+                             .spider-header {
+                                 display: flex;
+                                 align-items: center;
+                                 gap: 1rem;
+                                 margin-bottom: 0.5rem;
+                             }
+                             .spider-header h3 {
+                                 font-size: 1.5rem;
+                                 font-family: 'Bebas Neue', sans-serif;
+                                 margin: 0;
+                                 color: #fff;
+                             }
+                             .eventi-btn {
+                                 background:#27ae60;
+                                 color:#fff;
+                                 border:none;
+                                 border-radius:4px;
+                                 padding:0.4rem 1rem;
+                                 cursor:pointer;
+                                 display:inline-flex;
+                                 align-items:center;
+                                 font-size: 1rem;
+                                 margin-left: 0.5rem;
+                                 transition: background 0.2s;
+                             }
+                             .eventi-btn:hover {
+                                 background: #219150;
+                             }
+                             .eventi-btn i {
+                                 margin-right: 0.5rem;
+                             }
+                             .spider-details p {
+                                 margin: 0.1rem 0;
+                                 color: #ccc;
+                                 font-size: 1.05rem;
+                             }
+                             .spider-card-bottom {
+                                 display: flex;
+                                 justify-content: flex-end;
+                             }
+                             .elimina-btn {
+                                 background:#ac1815;
+                                 color:#fff;
+                                 border:none;
+                                 border-radius:4px;
+                                 padding:0.4rem 1rem;
+                                 cursor:pointer;
+                                 font-size: 1rem;
+                                 display: flex;
+                                 align-items: center;
+                                 transition: background 0.2s;
+                             }
+                             .elimina-btn:hover {
+                                 background: #8f1412;
+                             }
+                             .elimina-btn i {
+                                 margin-right: 0.5rem;
+                             }
+                             .modal {
+                                 display: none;
+                                 position: fixed;
+                                 top: 0;
+                                 left: 0;
+                                 width: 100%;
+                                 height: 100%;
+                                 background-color: rgba(0, 0, 0, 0.8);
+                                 justify-content: center;
+                                 align-items: center;
+                             }
+                             .modal-content {
+                                 background-color: #2a2a2a;
+                                 padding: 2rem;
+                                 border-radius: 12px;
+                                 width: 90%;
+                                 max-width: 500px;
+                             }
+                             .form-group { margin-bottom: 1rem; }
+                             .form-group label { display: block; margin-bottom: 0.5rem; }
+                             .form-group input, .form-group textarea, .form-group select {
+                                 padding: 0.5rem;
+                                 border-radius: 4px;
+                                 background-color: #333;
+                                 border: 1px solid #444;
+                                 color: #fff;
+                             }
+                             .form-group input[type="number"] {
+                                 width: 70px;
+                             }
+                             .form-group select {
+                                 margin-left: 0.5rem;
+                             }
+                             .form-buttons {
+                                 display: flex;
+                                 gap: 1rem;
+                                 margin-top: 1.5rem;
+                             }
+                             .save-btn, .cancel-btn {
+                                 padding: 0.7rem 1.5rem;
+                                 border-radius: 4px;
+                                 cursor: pointer;
+                                 border: none;
+                             }
+                             .save-btn {
+                                 background-color: #ac1815;
+                                 color: #fff;
+                             }
+                             .cancel-btn {
+                                 background-color: #444;
+                                 color: #fff;
+                             }
+                             .date {
+                                 color: #888;
+                                 font-size: 0.9rem;
+                                 margin-top: 0.5rem;
+                             }
+                             .radio-group {
+                                 display: flex;
+                                 gap: 1.5rem;
+                                 margin-top: 0.3rem;
+                             }
+                             .radio-group label {
+                                 display: flex;
+                                 align-items: center;
+                                 gap: 0.3rem;
+                                 font-size: 1.1rem;
+                             }
+                             .radio-group input[type="radio"] {
+                                 accent-color: #ac1815;
+                                 width: 18px;
+                                 height: 18px;
+                             }
+                         </style>
+                     </head>
+                     <body>
+                         <aside>
+                             <h1>
+                                 <img src="{% static 'logo2.png' %}" alt="Logo" style="width: 40px; height: 40px; vertical-align: middle; margin-right: 0px;">
+                                 MySpider
+                             </h1>
+                             <ul>
+                                 <li onclick="window.location.href='{% url 'diario' %}'"><i class="fas fa-user-circle"></i> Diario</li>
+                                 <li onclick="window.location.href='{% url 'cerca' %}'"><i class="fas fa-magnifying-glass"></i> Cerca</li>
+                                 <li onclick="window.location.href='{% url 'biblioteca' %}'"><i class="fas fa-book"></i> Biblioteca</li>
+                             </ul>
+                             <a href="{% url 'logout' %}" class="logout-btn">
+                                 <i class="fas fa-sign-out-alt" style="margin-right: 0.5rem;"></i>
+                                 Logout
+                             </a>
+                         </aside>
+                         <main>
+                             <h2>Il Mio <span class="highlight">Diario Spider</span></h2>
+                             <button class="add-btn" onclick="showModal()">
+                                 <i class="fas fa-plus"></i> Aggiungi Spider
+                             </button>
+                             <div class="spider-cards" id="spiderCards">
+                                 {% for s in spiders %}
+                                 <div class="spider-card">
+                                     <div class="spider-card-top">
+                                         <img src="{% static '' %}{{ s.icona }}" alt="icona" class="spider-img">
+                                         <div class="spider-info">
+                                             <div class="spider-header">
+                                                 <h3>{{ s.nome }}</h3>
+                                                 <button type="button" class="eventi-btn">
+                                                     <i class="fas fa-calendar-alt"></i> EVENTI
+                                                 </button>
+                                             </div>
+                                             <div class="spider-details">
+                                                 <p>Età: {{ s.eta }} {{ s.unita_eta }}</p>
+                                                 <p>Sesso: {{ s.sesso }}</p>
+                                                 <p>Specie: {{ s.specie }}</p>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <div class="spider-card-bottom">
+                                         <form method="POST" action="{% url 'delete_spider' s.id %}">
+                                             {% csrf_token %}
+                                             <button type="submit" class="elimina-btn">
+                                                 <i class="fas fa-trash"></i> Elimina
+                                             </button>
+                                         </form>
+                                     </div>
+                                 </div>
+                                 {% empty %}
+                                 <p>Nessuno spider ancora aggiunto.</p>
+                                 {% endfor %}
+                             </div>
+                             <div class="modal" id="spiderModal">
+                                 <div class="modal-content">
+                                     <h3>Nuovo Spider</h3>
+                                     <form id="spiderForm" method="POST" action="{% url 'add_spider' %}">
+                                         {% csrf_token %}
+                                         <div class="form-group">
+                                             <label for="nome">Nome Spider:</label>
+                                             <input type="text" id="nome" name="nome" required>
+                                         </div>
+                                         <div class="form-group">
+                                             <label for="eta">Età:</label>
+                                             <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                                 <input type="number" id="eta" name="eta" min="0" required>
+                                                 <select name="unita_eta" id="unita_eta" required>
+                                                     <option value="giorni">giorni</option>
+                                                     <option value="settimane">settimane</option>
+                                                     <option value="mesi">mesi</option>
+                                                     <option value="anni">anni</option>
+                                                 </select>
+                                             </div>
+                                         </div>
+                                         <div class="form-group">
+                                             <label>Sesso:</label>
+                                             <div class="radio-group">
+                                                 <label>
+                                                     <input type="radio" name="sesso" value="F" required> F
+                                                 </label>
+                                                 <label>
+                                                     <input type="radio" name="sesso" value="M" required> M
+                                                 </label>
+                                             </div>
+                                         </div>
+                                         <input type="hidden" id="icona" name="icona" value="pink.gif">
+                                         <div id="icona-preview" style="margin-top:0.5rem;"></div>
+                                         <script>
+                                             document.addEventListener('DOMContentLoaded', function() {
+                                                 const radios = document.querySelectorAll('input[name="sesso"]');
+                                                 const iconaInput = document.getElementById('icona');
+                                                 const previewDiv = document.getElementById('icona-preview');
+                                                 function updateIcona() {
+                                                     let icona = 'pink.gif';
+                                                     if (radios[1].checked) icona = 'blu.gif';
+                                                     iconaInput.value = icona;
+                                                     previewDiv.innerHTML = `<img src="{% static '' %}${icona}" alt="Anteprima icona" style="width:40px;">`;
+                                                 }
+                                                 radios.forEach(radio => {
+                                                     radio.addEventListener('change', updateIcona);
+                                                 });
+                                                 updateIcona(); // inizializza preview
+                                             });
+                                         </script>
+                                         <div class="form-group">
+                                             <label for="specie">Specie:</label>
+                                             <input type="text" id="specie" name="specie" required>
+                                         </div>
+                                         <div class="form-buttons">
+                                             <button type="submit" class="save-btn">Salva</button>
+                                             <button type="button" class="cancel-btn" onclick="hideModal()">Annulla</button>
+                                         </div>
+                                     </form>
+                                 </div>
+                             </div>
+                         </main>
+                         <script>
+                             function showModal() {
+                                 document.getElementById('spiderModal').style.display = 'flex';
+                             }
+                             function hideModal() {
+                                 document.getElementById('spiderModal').style.display = 'none';
+                             }
+                             window.onclick = function(event) {
+                                 if (event.target == document.getElementById('spiderModal')) {
+                                     hideModal();
+                                 }
+                             }
+                         </script>
+                     </body>
+                     </html>
