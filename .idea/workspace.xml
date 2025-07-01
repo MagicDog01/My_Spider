@@ -4,24 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="225d5da6-a32d-4245-9a1a-235942e20367" name="Changes" comment="aggiunta ed eliminazione tarantola funzionante. Parte grafica diario e schede finita">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/My_Spider/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/My_Spider/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/My_Spider/static/blu.gif" beforeDir="false" afterPath="$PROJECT_DIR$/static/blu.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/My_Spider/static/gif.gif" beforeDir="false" afterPath="$PROJECT_DIR$/static/gif.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/My_Spider/static/login.gif" beforeDir="false" afterPath="$PROJECT_DIR$/static/login.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/My_Spider/static/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/My_Spider/static/logo2.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/logo2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/My_Spider/static/pink.gif" beforeDir="false" afterPath="$PROJECT_DIR$/static/pink.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/My_Spider/static/ragni.gif" beforeDir="false" afterPath="$PROJECT_DIR$/static/ragni.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/My_Spider/static/tunnel.gif" beforeDir="false" afterPath="$PROJECT_DIR$/static/tunnel.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/My_Spider/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/My_Spider/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/My_Spider_X/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/My_Spider_X/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/My_Spider_X/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/My_Spider_X/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/diario.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/diario.html" afterDir="false" />
-    </list>
+    <list default="true" id="225d5da6-a32d-4245-9a1a-235942e20367" name="Changes" comment="aggiunta funzionalita creazione e visualizzazione eventi" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -156,7 +139,7 @@
       <workItem from="1751136198252" duration="189000" />
       <workItem from="1751136504500" duration="112000" />
       <workItem from="1751403454860" duration="6000" />
-      <workItem from="1751403479384" duration="5036000" />
+      <workItem from="1751403479384" duration="5333000" />
     </task>
     <task id="LOCAL-00001" summary="pagina home + pagina log in + pagina signup (la funzione di registrazione e log in funzionano password hashate sha256,requisiti di lunghezza e caratteri. database collegato e funzionante)">
       <option name="closed" value="true" />
@@ -254,7 +237,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749594678050</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="aggiunta funzionalita creazione e visualizzazione eventi">
+      <option name="closed" value="true" />
+      <created>1751408918408</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1751408918408</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -276,6 +267,7 @@
     <MESSAGE value="aggiunto pulsante back in login e signup, aggiunta pagina account senza funzioni e pulsante logout" />
     <MESSAGE value="creato diario bozza" />
     <MESSAGE value="aggiunta ed eliminazione tarantola funzionante. Parte grafica diario e schede finita" />
-    <option name="LAST_COMMIT_MESSAGE" value="aggiunta ed eliminazione tarantola funzionante. Parte grafica diario e schede finita" />
+    <MESSAGE value="aggiunta funzionalita creazione e visualizzazione eventi" />
+    <option name="LAST_COMMIT_MESSAGE" value="aggiunta funzionalita creazione e visualizzazione eventi" />
   </component>
 </project>
