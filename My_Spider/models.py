@@ -18,3 +18,11 @@ class spider(models.Model):
     utente = models.ForeignKey(utenti, on_delete=models.CASCADE)
     icona = models.CharField(max_length=100)
     unita_eta = models.CharField(max_length=10, default='anni')
+
+class Evento(models.Model):
+    id_evento = models.AutoField(primary_key=True)
+    tipo = models.CharField(max_length=50)
+    data = models.DateField()
+    note = models.TextField(blank=True)
+    foto = models.ImageField(upload_to='eventi_foto/', blank=True, null=True)
+    id_tarantola = models.ForeignKey(spider, on_delete=models.CASCADE, related_name='eventi')

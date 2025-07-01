@@ -4,11 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="225d5da6-a32d-4245-9a1a-235942e20367" name="Changes" comment="creato diario bozza">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/dc25db6e-e2ed-461d-9026-2d43b0ae2faa.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/dc25db6e-e2ed-461d-9026-2d43b0ae2faa.xml" afterDir="false" />
+    <list default="true" id="225d5da6-a32d-4245-9a1a-235942e20367" name="Changes" comment="aggiunta ed eliminazione tarantola funzionante. Parte grafica diario e schede finita">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/My_Spider/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/My_Spider/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/My_Spider/static/blu.gif" beforeDir="false" afterPath="$PROJECT_DIR$/static/blu.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/My_Spider/static/gif.gif" beforeDir="false" afterPath="$PROJECT_DIR$/static/gif.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/My_Spider/static/login.gif" beforeDir="false" afterPath="$PROJECT_DIR$/static/login.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/My_Spider/static/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/My_Spider/static/logo2.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/logo2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/My_Spider/static/pink.gif" beforeDir="false" afterPath="$PROJECT_DIR$/static/pink.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/My_Spider/static/ragni.gif" beforeDir="false" afterPath="$PROJECT_DIR$/static/ragni.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/My_Spider/static/tunnel.gif" beforeDir="false" afterPath="$PROJECT_DIR$/static/tunnel.gif" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/My_Spider/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/My_Spider/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/My_Spider_X/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/My_Spider_X/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/My_Spider_X/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/My_Spider_X/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/diario.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/diario.html" afterDir="false" />
@@ -24,6 +33,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Python Script" />
         <option value="HTML File" />
       </list>
     </option>
@@ -40,7 +50,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/MagicDog01/My_Spider.git&quot;,
-    &quot;accountId&quot;: &quot;34dbe105-dbdb-4177-9fde-5058f9eca94f&quot;
+    &quot;accountId&quot;: &quot;e9856daa-3073-4a89-99bf-865d6d0bf7d3&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -54,26 +64,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Django Server.My_Spider_X.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.github.copilot.settings.ApplicationConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Django Server.My_Spider_X.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
+    "django.template.preview.state": "SHOW_EDITOR",
+    "git-widget-placeholder": "master",
+    "junie.onboarding.icon.badge.shown": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.github.copilot.settings.ApplicationConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Nicholas\PycharmProjects\My_Spider_X" />
+      <recent name="C:\Users\Nicholas\PycharmProjects\My_Spider_X\My_Spider_X" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="My_Spider_X" type="Python.DjangoServer" factoryName="Django server">
       <module name="My_Spider_X" />
@@ -105,8 +122,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-PY-251.25410.159" />
-        <option value="bundled-python-sdk-e0ed3721d81e-36ea0e71a18c-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.25410.159" />
+        <option value="bundled-js-predefined-d6986cc7102b-b26f3e71634d-JavaScript-PY-251.26094.141" />
+        <option value="bundled-python-sdk-9f8e2b94138c-36ea0e71a18c-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.26094.141" />
       </set>
     </attachedChunks>
   </component>
@@ -130,7 +147,16 @@
       <workItem from="1749490088665" duration="467000" />
       <workItem from="1749551202557" duration="597000" />
       <workItem from="1749585117511" duration="6245000" />
-      <workItem from="1749593632940" duration="988000" />
+      <workItem from="1749593632940" duration="1103000" />
+      <workItem from="1749594801570" duration="28000" />
+      <workItem from="1750108367657" duration="138000" />
+      <workItem from="1750348617429" duration="183000" />
+      <workItem from="1750348841404" duration="2510000" />
+      <workItem from="1750408894443" duration="2120000" />
+      <workItem from="1751136198252" duration="189000" />
+      <workItem from="1751136504500" duration="112000" />
+      <workItem from="1751403454860" duration="6000" />
+      <workItem from="1751403479384" duration="5036000" />
     </task>
     <task id="LOCAL-00001" summary="pagina home + pagina log in + pagina signup (la funzione di registrazione e log in funzionano password hashate sha256,requisiti di lunghezza e caratteri. database collegato e funzionante)">
       <option name="closed" value="true" />
@@ -220,7 +246,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748529727233</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="aggiunta ed eliminazione tarantola funzionante. Parte grafica diario e schede finita">
+      <option name="closed" value="true" />
+      <created>1749594678050</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1749594678050</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,6 +275,7 @@
     <MESSAGE value="pagina home + pagina log in + pagina signup (la funzione di registrazione e log in funzionano password hashate sha256,requisiti di lunghezza e caratteri. database collegato e funzionante)" />
     <MESSAGE value="aggiunto pulsante back in login e signup, aggiunta pagina account senza funzioni e pulsante logout" />
     <MESSAGE value="creato diario bozza" />
-    <option name="LAST_COMMIT_MESSAGE" value="creato diario bozza" />
+    <MESSAGE value="aggiunta ed eliminazione tarantola funzionante. Parte grafica diario e schede finita" />
+    <option name="LAST_COMMIT_MESSAGE" value="aggiunta ed eliminazione tarantola funzionante. Parte grafica diario e schede finita" />
   </component>
 </project>

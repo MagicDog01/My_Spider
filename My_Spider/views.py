@@ -1,8 +1,12 @@
+from django.shortcuts import render, redirect, get_object_or_404
 from django.shortcuts import render, redirect
-from My_Spider.models import utenti, spider
+from My_Spider.models import utenti, spider, Evento
 from django.contrib.auth.hashers import make_password, check_password
 from django.views.decorators.csrf import csrf_exempt
 import re
+from .forms import EventoForm
+from django.utils import timezone
+
 
 def login_view(request):
     if request.method == "POST":
@@ -117,7 +121,6 @@ def add_spider(request):
         )
         nuovo_spider.save()
         return redirect('diario')
-    # Aggiungi un return anche per GET o altri metodi
     return redirect('diario')
 
 @csrf_exempt
@@ -130,3 +133,27 @@ def delete_spider(request, spider_id):
         except spider.DoesNotExist:
             pass
     return redirect('diario')
+
+
+def crea_evento_view(request, spider_id):
+    tarantola = get_object_or_404(spider, id=spider_id)
+    if request.method == 'POST':
+        form = EventoForm(request.POST, request.FILES)
+        if form.is_valid():
+            evento = form.save(commit=False)
+            evento.data = timezone.now()  # Imposta la data automaticamente
+            evento.id_tarantola = tarantola
+            evento.save()
+            return redirect('diario')
+    else:
+        form = EventoForm()
+    return render(request, 'crea_evento.html', {'form': form, 'tarantola': tarantola})
+
+def lista_eventi_view(request, spider_id):
+    eventi = Evento.objects.filter(id_tarantola=spider_id)
+    return render(request, 'lista_eventi.html', {'eventi': eventi})
+def elimina_evento(request, pk):
+            evento = get_object_or_404(Evento, pk=pk)
+            spider_id = evento.id_tarantola.id  # Usa il nome corretto del campo ForeignKey
+            evento.delete()
+            return redirect('lista_eventi', spider_id=spider_id)

@@ -310,9 +310,12 @@
                                          <div class="spider-info">
                                              <div class="spider-header">
                                                  <h3>{{ s.nome }}</h3>
-                                                 <button type="button" class="eventi-btn">
-                                                     <i class="fas fa-calendar-alt"></i> EVENTI
-                                                 </button>
+                                                 <a href="{% url 'crea_evento' s.id %}" class="eventi-btn">
+                                                     <i class="fas fa-plus"></i> CREA EVENTO
+                                                 </a>
+                                                <a href="{% url 'lista_eventi' s.id %}" class="eventi-btn" style="background:#2980b9; margin-left:0.5rem;">
+                                                    <i class="fas fa-list"></i> VISUALIZZA EVENTI
+                                                </a>
                                              </div>
                                              <div class="spider-details">
                                                  <p>Età: {{ s.eta }} {{ s.unita_eta }}</p>
