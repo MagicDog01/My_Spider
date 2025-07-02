@@ -108,27 +108,31 @@
     <h2 class="page-title">Eventi salvati</h2>
     <div class="row">
         {% for evento in eventi %}
-        <div class="col-md-6 col-lg-4">
-            <div class="card">
-                {% if evento.foto %}
-                <img src="{{ evento.foto.url }}" class="card-img-top" alt="Foto evento">
-                {% endif %}
-                <div class="card-body">
-                    <div class="event-title">{{ evento.tipo }}</div>
-                    <div class="event-date">{{ evento.data|date:"d/m/Y" }}</div>
-                    <p class="card-text">{{ evento.note }}</p>
-                     <form method="post" action="{% url 'elimina_evento' evento.pk %}" style="margin-top: 10px;">
-                         {% csrf_token %}
-                         <!-- Sostituisci il bottone nel form -->
-                         <button type="submit" class="delete-btn">
-                             <i class="fas fa-trash"></i> Elimina
-                         </button>
-                    </form>
+        <div class="col-12 mb-3">
+            <div class="card" style="padding: 0.7rem 1rem;">
+                <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                    {% if evento.foto %}
+                    <img src="{{ evento.foto.url }}" class="card-img-top" alt="Foto evento" style="width: 90px; height: 90px; object-fit: cover; border-radius: 10px; margin: 0;">
+                    {% endif %}
+                    <div style="flex: 1;">
+                        <div class="event-title" style="margin-bottom: 0.3rem;">{{ evento.tipo }}</div>
+                        <div class="event-date" style="margin-bottom: 0.5rem;">{{ evento.data|date:"d/m/Y" }}</div>
+                        <p class="card-text" style="margin-bottom: 0.7rem;">{{ evento.note }}</p>
+                        <form method="post" action="{% url 'elimina_evento' evento.pk %}">
+                            {% csrf_token %}
+                            <button type="submit" class="delete-btn" style="padding: 6px 16px; font-size: 14px;">
+                                <i class="fas fa-trash"></i> Elimina
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
         {% empty %}
         <div class="col-12">
+            <div class="alert alert-info">Nessun evento trovato.</div>
+        </div>
+
             <div class="alert alert-info">Nessun evento trovato.</div>
         </div>
         {% endfor %}

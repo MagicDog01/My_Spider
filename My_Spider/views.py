@@ -1,12 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.shortcuts import render, redirect
-from My_Spider.models import utenti, spider, Evento
+from My_Spider.models import utenti, spider, Evento, Articolo
 from django.contrib.auth.hashers import make_password, check_password
 from django.views.decorators.csrf import csrf_exempt
 import re
-from .forms import EventoForm
+from .forms import EventoForm, ArticoloForm
 from django.utils import timezone
-
 
 def login_view(request):
     if request.method == "POST":
@@ -57,13 +55,19 @@ def signup_view(request):
     return render(request, "signup.html")
 
 def home_view(request):
-    return render(request, "home.html")
+    context = {
+        'logged_in': request.session.get('logged_in', False),
+        'username': request.session.get('username', 'Utente')
+    }
+    return render(request, "home.html", context)
 
 def diario_view(request):
-    if request.session.get('logged_in'):
+    logged_in = request.session.get('logged_in', False)
+    if logged_in:
         user = utenti.objects.get(username=request.session['username'])
         spiders = spider.objects.filter(utente=user).order_by('-id')
         context = {
+            'logged_in': logged_in,
             'username': request.session.get('username', 'Utente'),
             'spiders': spiders
         }
@@ -71,26 +75,34 @@ def diario_view(request):
     return redirect('login')
 
 def cerca_view(request):
-    if request.session.get('logged_in'):
+    logged_in = request.session.get('logged_in', False)
+    if logged_in:
         context = {
+            'logged_in': logged_in,
             'username': request.session.get('username', 'Utente')
         }
         return render(request, 'cerca.html', context)
     return redirect('login')
 
 def biblioteca_view(request):
-    if request.session.get('logged_in'):
+    logged_in = request.session.get('logged_in', False)
+    if logged_in:
+        articoli = Articolo.objects.all().order_by('-data')
         context = {
-            'username': request.session.get('username', 'Utente')
+            'logged_in': logged_in,
+            'username': request.session.get('username', 'Utente'),
+            'articoli': articoli
         }
         return render(request, 'biblioteca.html', context)
     return redirect('login')
 
 def account_view(request):
-    if request.session.get('logged_in'):
-        context = {
-            'username': request.session.get('username', 'Utente')
-        }
+    logged_in = request.session.get('logged_in', False)
+    context = {
+        'logged_in': logged_in,
+        'username': request.session.get('username', 'Utente')
+    }
+    if logged_in:
         return render(request, 'account.html', context)
     return redirect('login')
 
@@ -100,7 +112,8 @@ def logout_view(request):
     return redirect('login')
 
 def add_spider(request):
-    if not request.session.get('logged_in'):
+    logged_in = request.session.get('logged_in', False)
+    if not logged_in:
         return redirect('login')
     user = utenti.objects.get(username=request.session['username'])
     if request.method == "POST":
@@ -125,7 +138,8 @@ def add_spider(request):
 
 @csrf_exempt
 def delete_spider(request, spider_id):
-    if request.method == "POST" and request.session.get('logged_in'):
+    logged_in = request.session.get('logged_in', False)
+    if request.method == "POST" and logged_in:
         user = utenti.objects.get(username=request.session['username'])
         try:
             s = spider.objects.get(id=spider_id, utente=user)
@@ -134,26 +148,91 @@ def delete_spider(request, spider_id):
             pass
     return redirect('diario')
 
-
 def crea_evento_view(request, spider_id):
+    logged_in = request.session.get('logged_in', False)
+    if not logged_in:
+        return redirect('login')
     tarantola = get_object_or_404(spider, id=spider_id)
     if request.method == 'POST':
         form = EventoForm(request.POST, request.FILES)
         if form.is_valid():
             evento = form.save(commit=False)
-            evento.data = timezone.now()  # Imposta la data automaticamente
+            evento.data = timezone.now()
             evento.id_tarantola = tarantola
             evento.save()
             return redirect('diario')
     else:
         form = EventoForm()
-    return render(request, 'crea_evento.html', {'form': form, 'tarantola': tarantola})
+    context = {
+        'logged_in': logged_in,
+        'username': request.session.get('username', 'Utente'),
+        'form': form,
+        'tarantola': tarantola
+    }
+    return render(request, 'crea_evento.html', context)
 
 def lista_eventi_view(request, spider_id):
+    logged_in = request.session.get('logged_in', False)
+    if not logged_in:
+        return redirect('login')
     eventi = Evento.objects.filter(id_tarantola=spider_id)
-    return render(request, 'lista_eventi.html', {'eventi': eventi})
+    context = {
+        'logged_in': logged_in,
+        'username': request.session.get('username', 'Utente'),
+        'eventi': eventi
+    }
+    return render(request, 'lista_eventi.html', context)
+
 def elimina_evento(request, pk):
-            evento = get_object_or_404(Evento, pk=pk)
-            spider_id = evento.id_tarantola.id  # Usa il nome corretto del campo ForeignKey
-            evento.delete()
-            return redirect('lista_eventi', spider_id=spider_id)
+    logged_in = request.session.get('logged_in', False)
+    if not logged_in:
+        return redirect('login')
+    evento = get_object_or_404(Evento, pk=pk)
+    spider_id = evento.id_tarantola.id
+    evento.delete()
+    return redirect('lista_eventi', spider_id=spider_id)
+
+def crea_articolo(request):
+    logged_in = request.session.get('logged_in', False)
+    if not logged_in:
+        return redirect('login')
+    if request.method == 'POST':
+        form = ArticoloForm(request.POST, request.FILES)
+        if form.is_valid():
+            articolo = form.save(commit=False)
+            user = utenti.objects.get(username=request.session['username'])
+            articolo.id_utente = user
+            articolo.data = timezone.now()
+            articolo.save()
+            return redirect('biblioteca')
+    else:
+        form = ArticoloForm()
+    context = {
+        'logged_in': logged_in,
+        'username': request.session.get('username', 'Utente'),
+        'form': form
+    }
+    return render(request, 'crea_articolo.html', context)
+
+def visualizzazione_articolo(request, pk):
+    logged_in = request.session.get('logged_in', False)
+    if not logged_in:
+        return redirect('login')
+    articolo = get_object_or_404(Articolo, pk=pk)
+    context = {
+        'logged_in': logged_in,
+        'username': request.session.get('username', 'Utente'),
+        'articolo': articolo
+    }
+    return render(request, 'visualizzazione_articolo.html', context)
+
+def elimina_articolo(request, pk):
+    if request.method == "POST":
+        articolo = get_object_or_404(Articolo, pk=pk)
+        if request.session.get('logged_in') and request.session.get('username') == articolo.id_utente.username:
+            articolo.delete()
+    return redirect('biblioteca')
+
+def visualizzazione_articolo(request, pk):
+    articolo = get_object_or_404(Articolo, pk=pk)
+    return render(request, 'visualizzazione_articolo.html', {'articolo': articolo})

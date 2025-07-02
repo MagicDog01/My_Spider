@@ -26,3 +26,10 @@ class Evento(models.Model):
     note = models.TextField(blank=True)
     foto = models.ImageField(upload_to='eventi_foto/', blank=True, null=True)
     id_tarantola = models.ForeignKey(spider, on_delete=models.CASCADE, related_name='eventi')
+
+class Articolo(models.Model):
+    id_articolo = models.AutoField(primary_key=True)
+    titolo = models.CharField(max_length=200)
+    testo = models.TextField()
+    data = models.DateField()
+    id_utente = models.ForeignKey(utenti, on_delete=models.CASCADE, db_column='id_utente')

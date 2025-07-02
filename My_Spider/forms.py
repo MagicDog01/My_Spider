@@ -1,5 +1,6 @@
 from django import forms
 from .models import Evento
+from .models import Articolo
 
 TIPO_EVENTO_CHOICES = [
     ('alimentazione', 'Alimentazione'),
@@ -17,3 +18,8 @@ class EventoForm(forms.ModelForm):
     class Meta:
         model = Evento
         fields = ['tipo', 'note', 'foto']
+
+class ArticoloForm(forms.ModelForm):
+    class Meta:
+        model = Articolo
+        fields = ['titolo', 'testo']

@@ -1,10 +1,219 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>biblioteca</title>
+    <title>Biblioteca</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Segoe UI', sans-serif;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .top-buttons {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .btn-custom {
+            background-color: #111;
+            color: #fff;
+            border: 1px solid #fff;
+            border-radius: 6px;
+            padding: 0.5rem 1.2rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn-custom:hover {
+            background-color: #fff;
+            color: #000;
+            box-shadow: 0 0 10px #fff;
+        }
+
+        .search-bar {
+            width: 100%;
+            max-width: 400px;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            border: 1px solid #555;
+            background-color: #111;
+            color: #eee;
+            margin: 0 auto 2rem auto;
+            display: block;
+            text-align: center;
+        }
+
+        .card-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: #111;
+            border: 1px solid #333;
+            border-radius: 14px;
+            width: 100%;
+            max-width: 300px;
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 12px #fff;
+        }
+
+        .card-img-top {
+            height: 180px;
+            object-fit: cover;
+            border-top-left-radius: 14px;
+            border-top-right-radius: 14px;
+            filter: grayscale(100%) brightness(0.9);
+            transition: filter 0.3s ease;
+        }
+
+        .card:hover .card-img-top {
+            filter: grayscale(0%) brightness(1.1);
+        }
+
+        .card-body {
+            padding: 1rem;
+        }
+
+        .badge-custom {
+            background-color: #fff;
+            color: #000;
+            font-size: 0.7rem;
+            padding: 0.3rem 0.6rem;
+            border-radius: 12px;
+            font-weight: bold;
+            margin-bottom: 0.4rem;
+            display: inline-block;
+        }
+
+        .article-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #fff;
+            margin: 0.5rem 0;
+        }
+
+        .article-author {
+            font-size: 0.9rem;
+            color: #ccc;
+            margin-bottom: 0.5rem;
+        }
+
+        .article-description {
+            font-size: 0.95rem;
+            color: #ddd;
+        }
+
+        .btn-delete {
+            background-color: #f82f2f;
+            color: #fff;
+            border: 1px solid #fff;
+            border-radius: 6px;
+            padding: 0.4rem 1rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin: 1rem 0;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .btn-delete:hover {
+            box-shadow: 0 0 10px #fff;
+        }
+
+        .alert-info {
+            background-color: #111;
+            color: #888;
+            border: 1px solid #333;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none !important;
+        }
+
+        @media (max-width: 576px) {
+            .top-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn-custom {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <div class="top-buttons">
+            <a href="{% url 'account' %}" class="btn-custom"><i class="fas fa-arrow-left"></i> Torna alla home</a>
+            <a href="{% url 'crea_articolo' %}" class="btn-custom"><i class="fas fa-plus"></i> Crea Articolo</a>
+        </div>
 
+        <h2 class="page-title">📚 Biblioteca</h2>
+
+        <input type="text" class="search-bar" placeholder="Cerca articoli... (non attivo)">
+
+        <div class="card-wrapper">
+            {% for articolo in articoli %}
+                <div class="card">
+                    <a href="{% url 'visualizzazione_articolo' articolo.pk %}">
+                        {% if articolo.copertina %}
+                            <img src="{{ articolo.copertina.url }}" class="card-img-top" alt="Copertina di {{ articolo.titolo }}">
+                        {% endif %}
+                        <div class="card-body">
+                            <div class="badge-custom">Articolo</div>
+                            <div class="article-title">{{ articolo.titolo }}</div>
+                            <div class="article-author">di {{ articolo.id_utente.username }}</div>
+                            <p class="article-description">{{ articolo.descrizione|truncatewords:25 }}</p>
+                        </div>
+                    </a>
+                    {% if logged_in and username == articolo.id_utente.username %}
+                        <form action="{% url 'elimina_articolo' articolo.pk %}" method="post" style="text-align: center;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn-delete" onclick="return confirm('Sei sicuro di voler eliminare questo articolo?');">
+                                <i class="fas fa-trash"></i> Elimina
+                            </button>
+                        </form>
+                    {% endif %}
+                </div>
+            {% empty %}
+                <div class="alert alert-info">Nessun articolo disponibile al momento.</div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>
