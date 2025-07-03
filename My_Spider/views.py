@@ -2,9 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from My_Spider.models import utenti, spider, Evento, Articolo
 from django.contrib.auth.hashers import make_password, check_password
 from django.views.decorators.csrf import csrf_exempt
-import re
 from .forms import EventoForm, ArticoloForm
 from django.utils import timezone
+import re
 
 def login_view(request):
     if request.method == "POST":
@@ -87,11 +87,14 @@ def cerca_view(request):
 def biblioteca_view(request):
     logged_in = request.session.get('logged_in', False)
     if logged_in:
+        user = utenti.objects.get(username=request.session['username'])
         articoli = Articolo.objects.all().order_by('-data')
+        mostra_pulsante = user.livello >= 10
         context = {
             'logged_in': logged_in,
-            'username': request.session.get('username', 'Utente'),
-            'articoli': articoli
+            'username': user.username,
+            'articoli': articoli,
+            'mostra_pulsante': mostra_pulsante
         }
         return render(request, 'biblioteca.html', context)
     return redirect('login')
@@ -133,6 +136,9 @@ def add_spider(request):
             icona=icona
         )
         nuovo_spider.save()
+        # Incrementa il livello dell'utente
+        user.livello += 1
+        user.save()
         return redirect('diario')
     return redirect('diario')
 
@@ -160,6 +166,10 @@ def crea_evento_view(request, spider_id):
             evento.data = timezone.now()
             evento.id_tarantola = tarantola
             evento.save()
+            # Incrementa il livello dell'utente
+            user = utenti.objects.get(username=request.session['username'])
+            user.livello += 1
+            user.save()
             return redirect('diario')
     else:
         form = EventoForm()
@@ -232,7 +242,3 @@ def elimina_articolo(request, pk):
         if request.session.get('logged_in') and request.session.get('username') == articolo.id_utente.username:
             articolo.delete()
     return redirect('biblioteca')
-
-def visualizzazione_articolo(request, pk):
-    articolo = get_object_or_404(Articolo, pk=pk)
-    return render(request, 'visualizzazione_articolo.html', {'articolo': articolo})
