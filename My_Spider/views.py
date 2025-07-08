@@ -5,20 +5,44 @@ from django.views.decorators.csrf import csrf_exempt
 from .forms import EventoForm, ArticoloForm
 from django.utils import timezone
 import re
-
+import time
 def login_view(request):
+    max_attempts = 3
+    block_minutes = 15
+    blocked_until = request.session.get('blocked_until')
+    if blocked_until and time.time() < blocked_until:
+        minuti_restanti = int((blocked_until - time.time()) // 60) + 1
+        return render(request, "login.html", {"error": f"Troppi tentativi falliti. Riprova tra {minuti_restanti} minuti."})
+
     if request.method == "POST":
         username = request.POST["username"]
         password = request.POST["password"]
+
+        # Inizializza tentativi se non presenti
+        attempts = request.session.get('login_attempts', 0)
+
         try:
             user = utenti.objects.get(username=username)
             if check_password(password, user.password):
                 request.session['logged_in'] = True
                 request.session['username'] = username
+                request.session['login_attempts'] = 0  # reset tentativi
                 return redirect("account")
-            return render(request, "login.html", {"error": "Password non corretta"})
+            else:
+                attempts += 1
         except utenti.DoesNotExist:
-            return render(request, "login.html", {"error": "Username non trovato"})
+            attempts += 1
+
+        request.session['login_attempts'] = attempts
+
+        if attempts >= max_attempts:
+            request.session['blocked_until'] = time.time() + block_minutes * 60
+            return render(request, "login.html", {"error": f"Troppi tentativi falliti. Riprova tra {block_minutes} minuti."})
+        else:
+            return render(request, "login.html", {"error": f"Credenziali errate. Tentativi rimasti: {max_attempts - attempts}"})
+
+    # Reset tentativi se si accede alla pagina senza POST
+    request.session['login_attempts'] = 0
     return render(request, "login.html")
 
 def is_valid_password(password):
