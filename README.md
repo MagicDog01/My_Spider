@@ -74,6 +74,8 @@ Il progetto sarà disponibile all’indirizzo:
 ## Manuale d’uso rapido
 
 ### Funzionalità principali:
+<img width="943" height="434" alt="screen diario" src="https://github.com/user-attachments/assets/1d7433b6-b4ec-48e3-9f4f-a7fa8e713713" />
+
 
 *    **Registrazione/Login**: convalidata via email.
 *    **Gestione tarantole**: aggiungi nome, specie, sesso, data di acquisizione, foto.
@@ -97,7 +99,7 @@ Puoi accedere con uno dei seguenti account demo:
 | Utente base | `Mario`        | `12345678!`|
 
 
->   *Questi account hanno già alcune tarantole ed eventi registrati per prova.*
+>   *Questi account hanno già alcune tarantole, eventi e articoli registrati per prova.*
 
 ---
 
