@@ -100,10 +100,10 @@ Il progetto sarà disponibile all’indirizzo:
 
 Puoi accedere con uno dei seguenti account demo:
 
-| Ruolo       | Username       | Password   |
-| ----------- | -------------- | ---------- |
-| Scrittore (lv 19)   | `ok`           | `12345678!`|
-| Utente base (lv 3) | `Sandy`        | `password123!`|
+|Livello| Ruolo       | Username       | Password   |
+|---| ----------- | -------------- | ---------- |
+|19|| Scrittore    | `ok`           | `12345678!`|
+|3| Utente base  | `Sandy`        | `password123!`|
 
 
 >   *Questi account hanno già alcune tarantole, eventi e articoli registrati per prova.*
