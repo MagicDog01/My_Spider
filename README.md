@@ -102,7 +102,7 @@ Puoi accedere con uno dei seguenti account demo:
 
 |Livello| Ruolo       | Username       | Password   |
 |---| ----------- | -------------- | ---------- |
-|19|| Scrittore    | `ok`           | `12345678!`|
+|19| Scrittore    | `ok`           | `12345678!`|
 |3| Utente base  | `Sandy`        | `password123!`|
 
 
