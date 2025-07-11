@@ -1,4 +1,4 @@
-<img width="322" height="78" alt="logo" src="https://github.com/user-attachments/assets/54fc9ee5-45dc-4c8a-b977-6f6a3253ca17" />
+<img width="472" height="98" alt="logo" src="https://github.com/user-attachments/assets/54fc9ee5-45dc-4c8a-b977-6f6a3253ca17" />
 
 **MySpider** è una piattaforma gestionale e social pensata per appassionati di tarantole.
 Gli utenti possono registrare i propri esemplari, tenere traccia degli eventi (muta, alimentazione, ecc.), condividere note e foto, interagire con altri utenti, e consultare articoli informativi.
