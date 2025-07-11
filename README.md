@@ -89,9 +89,9 @@ Il progetto sarà disponibile all’indirizzo:
 
 <img width="943" height="428" alt="biblioteca" src="https://github.com/user-attachments/assets/483860f1-d99b-4225-bc1d-bc37c06bba65" />
 
-*    **Articoli/manuali**: accessibili in sola lettura o modificabili da utenti esperti.
-*    **Interazione sociale**: commenti, like, segnalazioni, badge per attività.
-*    **Filtri e ricerca**: per specie, sesso, eventi, date.
+*    **Articoli/Guide**: accessibili in sola lettura o modificabili da utenti esperti.
+*    **Interazione sociale**: commenti, like, segnalazioni.
+*    **Filtri e ricerca**: per specie, sesso, eventi.
 
 ---
 
