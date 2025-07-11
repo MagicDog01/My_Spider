@@ -4,7 +4,7 @@
 Gli utenti possono registrare i propri esemplari, tenere traccia degli eventi (muta, alimentazione, ecc.), condividere note e foto, interagire con altri utenti, e consultare articoli informativi.
 
 ---
-## 🧪 Tecnologie utilizzate
+##  Tecnologie utilizzate
 
 ### Backend
 - **Python** – Linguaggio principale del progetto.
