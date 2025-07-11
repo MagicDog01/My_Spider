@@ -1,4 +1,3 @@
-# 🕷 MySpider
 <img width="272" height="78" alt="logo" src="https://github.com/user-attachments/assets/54fc9ee5-45dc-4c8a-b977-6f6a3253ca17" />
 
 **MySpider** è una piattaforma gestionale e social pensata per appassionati di tarantole.
