@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="225d5da6-a32d-4245-9a1a-235942e20367" name="Changes" comment="popolamento manuale database">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d8c6e7f2-1680-4128-98ea-a1c914e7af6d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d8c6e7f2-1680-4128-98ea-a1c914e7af6d.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/My_Spider/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/My_Spider/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -89,7 +90,7 @@
         <env name="DJANGO_SETTINGS_MODULE" value="My_Spider_X.settings" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.13 (MySpider)" />
+      <option name="SDK_NAME" value="Python 3.13 (My_Spider)" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
