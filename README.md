@@ -78,7 +78,10 @@ Il progetto sarà disponibile all’indirizzo:
 
 <img width="952" height="434" alt="login" src="https://github.com/user-attachments/assets/837acdce-ce6e-41da-af26-b31bd51d7baa" />
 
-*    **Registrazione/Login**: convalidata via email.
+### Registrazione & Login
+- **Registrazione**: email, username, password (≥ 8 caratteri, 1 numero, 1 simbolo).
+- **Login**: username + password.
+- **Sicurezza**: 3 tentativi falliti → blocco di 15 min.
 ---
 
 <img width="943" height="434" alt="screen diario" src="https://github.com/user-attachments/assets/1d7433b6-b4ec-48e3-9f4f-a7fa8e713713" />
