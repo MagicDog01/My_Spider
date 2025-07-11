@@ -76,17 +76,16 @@ Il progetto sarà disponibile all’indirizzo:
 ### Funzionalità principali:
 
 
-
+<img width="952" height="434" alt="login" src="https://github.com/user-attachments/assets/837acdce-ce6e-41da-af26-b31bd51d7baa" />
 *    **Registrazione/Login**: convalidata via email.
-*    <img width="952" height="434" alt="login" src="https://github.com/user-attachments/assets/837acdce-ce6e-41da-af26-b31bd51d7baa" />
 
+<img width="943" height="434" alt="screen diario" src="https://github.com/user-attachments/assets/1d7433b6-b4ec-48e3-9f4f-a7fa8e713713" />
 *    **Gestione tarantole**: aggiungi nome, specie, sesso, data di acquisizione, foto.
 *    **Eventi associati**: come muta, alimentazione, accoppiamento, note personali, ecc.
 *    **Media e note private**: caricamento di foto e appunti, anche privati (protetti da cifratura).
-*    <img width="943" height="434" alt="screen diario" src="https://github.com/user-attachments/assets/1d7433b6-b4ec-48e3-9f4f-a7fa8e713713" />
-*    **Articoli/manuali**: accessibili in sola lettura o modificabili da utenti esperti.
-*    <img width="943" height="428" alt="biblioteca" src="https://github.com/user-attachments/assets/483860f1-d99b-4225-bc1d-bc37c06bba65" />
 
+<img width="943" height="428" alt="biblioteca" src="https://github.com/user-attachments/assets/483860f1-d99b-4225-bc1d-bc37c06bba65" />
+*    **Articoli/manuali**: accessibili in sola lettura o modificabili da utenti esperti.
 *    **Interazione sociale**: commenti, like, segnalazioni, badge per attività.
 *    **Filtri e ricerca**: per specie, sesso, eventi, date.
 *    **Privacy e sicurezza**: implementazione STRIDE, mitigazioni SQLi, rate limiting, logging e cifratura.
