@@ -17,7 +17,6 @@ Gli utenti possono registrare i propri esemplari, tenere traccia degli eventi (m
 ### Frontend
 - **HTML/CSS** – Utilizzati per costruire l’interfaccia utente.
 - **Bootstrap** – Framework CSS per uno stile responsivo e coerente.
-- 
 ---
 
 ## Installazione
