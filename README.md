@@ -103,8 +103,7 @@ Puoi accedere con uno dei seguenti account demo:
 | Ruolo       | Username       | Password   |
 | ----------- | -------------- | ---------- |
 | Scrittore   | `ok`           | `12345678!`|
-| Utente base | `PietroParker` | `12345678!`|
-| Utente base | `Mario`        | `12345678!`|
+| Utente base | `Sandy`        | `password123!`|
 
 
 >   *Questi account hanno già alcune tarantole, eventi e articoli registrati per prova.*
