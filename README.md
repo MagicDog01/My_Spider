@@ -37,13 +37,6 @@ git clone https://github.com/MagicDog01/My_Spider.git
 cd My_Spider
 ```
 
-### Creazione ambiente virtuale (opzionale)
-
-```bash
-python -m venv venv
-source venv/bin/activate        # Su Windows: venv\Scripts\activate
-```
-
 ### Installazione dipendenze
 
 ```bash
@@ -86,8 +79,12 @@ Il progetto sarà disponibile all’indirizzo:
 
 <img width="943" height="434" alt="screen diario" src="https://github.com/user-attachments/assets/1d7433b6-b4ec-48e3-9f4f-a7fa8e713713" />
 
-*    **Gestione tarantole**: aggiungi nome, specie, sesso, data di acquisizione.
-*    **Eventi associati**: come muta, alimentazione, accoppiamento, ecc.
+*    **Creazione schede tarantole**: aggiungi nome, specie, sesso, data di acquisizione.
+---
+
+<img width="855" height="422" alt="lista eventi" src="https://github.com/user-attachments/assets/0882bd31-7d2c-4c62-b9b3-176810763c55" />
+
+*    **Eventi associati ad ogni tarantola**: come muta, alimentazione, accoppiamento, ecc.
 *    **Media e note private**: caricamento di foto e appunti.
 ---
 
